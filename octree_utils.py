@@ -37,20 +37,20 @@ def create_wireframe_sphere(center, radius):
     line_set.translate(center)
     return line_set
 
-def visualize_spheres(node, vis):
+def visualize_spheres(node, render_object):
     # recursively add wireframe spheres for the given node and its children.
     if node is None:
         return
     
     wireframe_sphere = create_wireframe_sphere(node.center, node.radius)
-    vis.add_geometry(wireframe_sphere)
+    render_object.add_geometry(wireframe_sphere)
     
     for child in node.children:
-        visualize_spheres(child, vis)
+        visualize_spheres(child, render_object)
 
 def display_octree(root_node):
-    vis = o3d.visualization.Visualizer()
-    vis.create_window()
-    visualize_spheres(root_node, vis)
-    vis.run()
-    vis.destroy_window()
+    render_object = o3d.visualization.Visualizer()
+    render_object.create_window()
+    visualize_spheres(root_node, render_object)
+    render_object.run()
+    render_object.destroy_window()

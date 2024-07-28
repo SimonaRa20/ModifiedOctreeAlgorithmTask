@@ -24,9 +24,9 @@ class PointCloudUtils:
         point_object = o3d.geometry.PointCloud()
         point_object.points = o3d.utility.Vector3dVector(self.points)
         
-        renderObject = o3d.visualization.Visualizer()
-        renderObject.create_window(width = 800, height = 800)
-        renderObject.add_geometry(point_object)
+        render_object = o3d.visualization.Visualizer()
+        render_object.create_window(width = 800, height = 800)
+        render_object.add_geometry(point_object)
 
-        renderObject.run()
-        renderObject.destroy_window()
+        render_object.run()
+        render_object.destroy_window()
